@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6015490891257536"
@@ -20,7 +20,7 @@
                 initial_value = ValorResultante;
                 Soma = total_value-ValorResultante;
                 if (Soma < 0) {
-                    document.getElementById("camada").innerHTML = "Você chegou na camada: <b>"+ (contador) +"</b> <br> Para chegar na camada <b>"+ (contador+1) +"</b> : <b>"+ (-Soma) +"</b> <br/> Total Necessário para a próxima camada: <b>"+ (ValorResultante) +"</b>";
+                    document.getElementById("camada").innerHTML = "You've reached the layer: <b>"+ (contador) +"</b> <br> To reach the layer <b>"+ (contador+1) +"</b> : <b>"+ (-Soma) +"</b> <br/> You must have: <b>"+ (ValorResultante) +"</b> to reach next layer.";
                     document.getElementById("resultados").style.display = "inline-block";
                     break
                 }
@@ -36,6 +36,7 @@
             background-color: rgb(102, 102, 102);
             background-image: url('https://wallpapercave.com/wp/wp2856288.gif');
             background-size: cover;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
         }
         #resultados {
             background-color: rgb(20, 214, 53);
@@ -80,9 +81,22 @@
         hr {
             opacity: 0;
         }
-
+        a {
+            text-decoration: none;
+            color: greenyellow;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         .stile{
             text-align: center;
+        }
+        .footer_credits{
+            position: absolute;
+            bottom: 1%;
+            text-align: center;
+            color: white;
+            display: inline-block;
         }
 
         #dev{
@@ -93,20 +107,20 @@
 
 <body>
     <div id="form_div">
-        <h2>Calculadora Martingale</h2>
+        <h2>Martingale Calculator</h2>
         <form>
-            <label class="lab">Valor Total</label>
+            <label class="lab">Total Value</label>
             <input placeholder="100" type="number" / id="total_value">
             <hr>
-            <label class="lab">Multiplicador na derrota</label>
+            <label class="lab">Multiplier on loss</label>
             <input placeholder="2.3" type="number" / id="mult_loss">
             <hr>
-            <label class="lab">Valor Inicial</label>
+            <label class="lab">Initial Value</label>
             <input placeholder="1" type="number" / id="initial_value">
             <hr>
            
         </form> 
-        <button onclick='push()' id="calcular">Calcular</button> 
+        <button onclick='push()' id="calcular">Calculate</button> 
         <hr>  
         <div id="resultados" style="display: none;">
             <p id="camada"></p>
@@ -118,5 +132,11 @@
     <hr>
     <div id="result_div" class="stile"></div>
 </body>
+
+<footer>
+    <div class="footer_credits"> Written with ❤️ by
+        <a href="https://github.com/maxuelgamer/" class="credit-links" target="_blank">Maxuel</a>.
+    </div>
+</footer>
 
 </html>
