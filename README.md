@@ -1,1 +1,1 @@
-# site
+# A simple martingale web calculator
