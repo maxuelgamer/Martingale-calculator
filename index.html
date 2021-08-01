@@ -1,26 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6015490891257536"
+    crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Martingale</title>
+
+    <script>
+        function push() {
+            var total_value = parseFloat(document.getElementById("total_value").value);
+            var initial_value = parseFloat(document.getElementById("initial_value").value);
+            var mult_loss = parseFloat(document.getElementById("mult_loss").value);
+            var contador = 0;
+            var ValorResultante = initial_value;
+            var Soma = total_value;
+            while (contador < 20) {
+                ValorResultante = initial_value*mult_loss;
+                initial_value = ValorResultante;
+                Soma = total_value-ValorResultante;
+                if (Soma < 0) {
+                    document.getElementById("camada").innerHTML = "Você chegou na camada: <b>"+ (contador) +"</b> <br> Para chegar na camada <b>"+ (contador+1) +"</b> : <b>"+ (-Soma) +"</b> <br/> Total Necessário para a próxima camada: <b>"+ (ValorResultante) +"</b>";
+                    document.getElementById("resultados").style.display = "inline-block";
+                    break
+                }
+                contador++
+            }                
+        }
+        
+    </script>
+    
+
     <style>
         body {
-            background-color: rgb(136, 91, 173);
-            color: white;
-            font: normal 20pt Arial;
+            background-color: rgb(102, 102, 102);
+            background-image: url('https://wallpapercave.com/wp/wp2856288.gif');
+            background-size: cover;
         }
+        #resultados {
+            background-color: rgb(20, 214, 53);
+            padding-inline: 10px;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 20%;
+        }
+        #form_div {
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            bottom: 60%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+            padding-inline: 10px;
+            padding-bottom: 10px;
+            background: rgb(255,42,0);
+            background: linear-gradient(0deg, rgba(255,42,0,1) 0%, rgba(253,187,45,1) 100%);
+            text-align: center;
+            border-radius: 10%;
+            border: 1px solid black;
+        }
+        #calcular {
+            background-color: rgb(250, 250, 250);
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 15%;
+        }
+        #calcular:hover {
+            background-color: rgb(24, 218, 127);
+        }
+        #calcular:active {
+            background-color: rgb(255, 255, 255);
+        }
+        .lab {
+            display: inline-block;
+            width: 180px;
+            text-align: justify;
+            text-justify: distribute;
+        }
+
+        hr {
+            opacity: 0;
+        }
+
+        .stile{
+            text-align: center;
+        }
+
+        #dev{
+            font-size:x-small;      }
+
     </style>
 </head>
+
 <body>
-    <h1>Testing</h1>
-    <p>Opa hahaha!!!</p>
-    <script>
-        var n1 = Number(window.prompt('Digite 1 numero: '))
-        var n2 = Number(window.prompt('Digite 1 numero: '))
-        var soma = n1 + n2
-        window.alert(`A soma é , ${soma}`)
-    </script>
+    <div id="form_div">
+        <h2>Calculadora Martingale</h2>
+        <form>
+            <label class="lab">Valor Total</label>
+            <input placeholder="100" type="number" / id="total_value">
+            <hr>
+            <label class="lab">Multiplicador na derrota</label>
+            <input placeholder="2.3" type="number" / id="mult_loss">
+            <hr>
+            <label class="lab">Valor Inicial</label>
+            <input placeholder="1" type="number" / id="initial_value">
+            <hr>
+           
+        </form> 
+        <button onclick='push()' id="calcular">Calcular</button> 
+        <hr>  
+        <div id="resultados" style="display: none;">
+            <p id="camada"></p>
+        </div>
+    </div>
+    <div id="porcentagem_div" class="stile"></div>
+    <hr>
+    <div id="valortotal_div" class="stile"></div>
+    <hr>
+    <div id="result_div" class="stile"></div>
 </body>
+
 </html>
